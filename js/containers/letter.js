@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import LetterComponent from '../components/letter.jsx'
+import Component from '../components/letter.jsx'
 import { rollLetter } from '../actions'
 
 const mapStateToProps = (state, ownProps) => {
@@ -19,6 +19,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const Letter = connect(
     mapStateToProps,
     mapDispatchToProps
-)(LetterComponent)
+)(Component)
 
 export default Letter

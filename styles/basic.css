@@ -1,15 +1,26 @@
 body {
-    background-color: #333;
-    color: #FFF;
-    font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
-    font-size: 14px;
+    background-color: #FFF;
+    color: #595F6E;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
     font-style: normal;
     font-variant: normal;
-    font-weight: 400;
-    line-height: 20px;
+    font-weight: bold;
+    line-height: 24px;
 }
 
 .game {
-    width: 600px;
-    height: 480px;
+    width: 1020px;
+}
+
+.letter {
+    width: 100%;    
+    padding: 1em 0 0.6em 0;
+    text-align: center;
+    font-size: 4em;
+    cursor: pointer;
+}
+
+.answers {
+    width: 100%;
 }

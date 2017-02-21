@@ -1,5 +1,6 @@
 import '../styles/reset.css'
 import '../styles/basic.css'
+import '../styles/input.css'
 
 import React from 'react'
 import { render } from 'react-dom'
