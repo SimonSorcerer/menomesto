@@ -1,6 +1,6 @@
 import React from 'react';
 import Letter from '../containers/letter'
-import Answers from '../components/answers.jsx'
+import Answers from '../containers/answers'
 
 export default class Game extends React.Component {
     render() {

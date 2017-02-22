@@ -23,6 +23,8 @@ export default class Letter extends React.Component {
                     <span className='label-content'>Zviera</span>
                 </label>
             </span>
+
+            Debug: { this.props.sug }
         </div>
     }
 }
