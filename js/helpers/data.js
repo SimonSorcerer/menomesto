@@ -9,7 +9,7 @@ const data = {
 }
 
 const filterSetOnStartingLetter = (set, startingLetter) => {
-    return set.filter(x => x.toLowerCase().startsWith(startingLetter.toLowerCase()));
+    return set.filter(x => x.startsWith(startingLetter.toLowerCase()));
 }
 
 function* suggest(data, startingLetter) {
@@ -21,8 +21,10 @@ function* suggest(data, startingLetter) {
     }
 }
 
-export const isValid = (text, type) => {
-    return text && data[type] && data[type].includes(text);
+export const hasMatch = (text, type, startingLetter) => {
+    let transformedText = text.toLowerCase();
+
+    return text && data[type] && data[type].includes(transformedText) && transformedText.startsWith(startingLetter.toLowerCase());
 }
 
 export const getSuggestions = (type, count = 5, letter = 'A') => {

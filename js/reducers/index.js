@@ -1,5 +1,19 @@
+import { hasMatch } from '../helpers/data'
+
 const defaultState = {
-    letter: 'A'
+    letter: 'A',
+    meno: {
+        text: '',
+        isValid: false
+    },
+    mesto: {
+        text: '',
+        isValid: false
+    },
+    zviera: {
+        text: '',
+        isValid: false
+    }
 }
 
 const getLetter = (exclude = '') => {
@@ -18,6 +32,12 @@ const reducers = (state = defaultState, action) => {
                 ...state,
                 letter: getLetter(state.letter)
             }
+        case 'WRITE':
+            let newState = {...state};
+            newState[action.set].text = action.text;
+            newState[action.set].isValid = hasMatch(action.text, action.set, state.letter)
+
+            return newState;
         default:
             return state;
     }
