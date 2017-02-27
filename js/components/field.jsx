@@ -3,7 +3,8 @@ import Message from '../containers/message'
 
 export default class Field extends React.Component {
     render() {
-        const labelClassName = this.props.isValid ? 'label-green': 'label-red';
+        let labelClassName = this.props.isValid ? 'label-green': 'label-red';
+        labelClassName += this.props.isFilled ? ' filled' : '';
 
         return <div>
             <span className='answer'>
