@@ -8,8 +8,12 @@ const data = {
     zviera: zvierata
 }
 
-function* suggest(type) {
-    let set = [...data[type]];
+const filterSetOnStartingLetter = (set, startingLetter) => {
+    return set.filter(x => x.toLowerCase().startsWith(startingLetter.toLowerCase()));
+}
+
+function* suggest(data, startingLetter) {
+    let set = filterSetOnStartingLetter(data, startingLetter);
     let counter = set.length;
 
     while (counter--) {
@@ -21,8 +25,8 @@ export const isValid = (text, type) => {
     return text && data[type] && data[type].includes(text);
 }
 
-export const getSuggestions = (type, count) => {
-    let generator = suggest(type);
+export const getSuggestions = (type, count = 5, letter = 'A') => {
+    let generator = suggest(data[type], letter);
     let result = [];
     
     while (count--) {
