@@ -2,10 +2,10 @@ import React from 'react';
 
 export default class Message extends React.Component {
     render() {
-        const className = this.props.isVisible ? 'message' : 'message hidden';
+        const className = this.props.message.length ? 'message' : 'message hidden';
 
         return <div className={className}>
-            {this.props.message}
+            <span className={this.props.mood}>{this.props.message}</span>
         </div>
     }
 }
