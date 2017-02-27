@@ -18,7 +18,7 @@ function* suggest(type) {
 }
 
 export const isValid = (text, type) => {
-    return text && data[type] && data[type].contains(text);
+    return text && data[type] && data[type].includes(text);
 }
 
 export const getSuggestions = (type, count) => {
