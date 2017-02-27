@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Letter extends React.Component {
+export default class Field extends React.Component {
     render() {
         const labelClassName = this.props.isValid ? 'label-green': 'label-red';
 

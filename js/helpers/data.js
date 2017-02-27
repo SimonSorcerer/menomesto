@@ -36,3 +36,5 @@ export const getSuggestions = (type, count = 5, letter = 'A') => {
     }
     return result;
 }
+
+export const types = [...Object.keys(data)];

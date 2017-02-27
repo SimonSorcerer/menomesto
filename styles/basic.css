@@ -33,3 +33,15 @@ body {
 .answers {
     width: 100%;
 }
+
+.message {
+    text-align: center;
+    font-size: .7em;
+    opacity: 0.6;
+    margin-top: 10px;
+    color: indianred;
+}
+
+.message.hidden {
+    display: none;
+}
