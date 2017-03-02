@@ -1,11 +1,11 @@
 # meno mesto zviera vec
 Simple prototype of popular 'car' game 'meno mesto zviera vec' (in slovak).
 
-Screenshot:
-![App screenshot](https://raw.githubusercontent.com/SimonSorcerer/menomesto/gh-pages/images/example.png "App Screenshot")
-
-Deployed application (in Slovak language only for now!):
+Hosted demo (in Slovak language only for now!):
 https://simonsorcerer.github.io/menomesto/
+
+Sample screenshot:
+![App screenshot](https://raw.githubusercontent.com/SimonSorcerer/menomesto/gh-pages/images/example.png "App Screenshot")
 
 Running application instructions:
 1. Install dependencies `npm install`
