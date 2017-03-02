@@ -19,8 +19,8 @@ body {
     text-align: center;
     font-size: 4em;
     cursor: pointer;
-     -webkit-transition: color 2s, -webkit-transform 2s;
-    transition: color 2s, transform 2s;
+     -webkit-transition: color 1s;
+    transition: color 1s;
 }
 
 .no-select {

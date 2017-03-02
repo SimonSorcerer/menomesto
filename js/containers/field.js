@@ -4,6 +4,7 @@ import { write } from '../actions'
 
 const mapStateToProps = (state, ownProps) => {
     return {
+        text: state.fields[ownProps.type].text,
         isValid: state.fields[ownProps.type].isValid,
         isFilled: state.fields[ownProps.type].text.length > 0
     }

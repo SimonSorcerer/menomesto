@@ -1,21 +1,16 @@
 import { hasMatch } from '../helpers/data'
 
+const defaultField = {
+    text: '',
+    isValid: false
+}
+
 const defaultState = {
     letter: 'A',
-    isLocked: false,
     fields: {
-        meno: {
-            text: '',
-            isValid: false
-        },
-        mesto: {
-            text: '',
-            isValid: false
-        },
-        zviera: {
-            text: '',
-            isValid: false
-        }
+        meno: {...defaultField},
+        mesto: {...defaultField},
+        zviera: {...defaultField}
     }
 }
 
@@ -28,13 +23,23 @@ const getLetter = (exclude = '') => {
     return letters[Math.floor(Math.random() * letters.length)]
 }
 
+const resetState = (state) => {
+    return {
+        ...state,
+        fields: {
+            meno: {...defaultField},
+            mesto: {...defaultField},
+            zviera: {...defaultField}
+        }
+    }
+}
+
 const reducers = (state = defaultState, action) => {
     switch (action.type) {
         case 'ROLL_LETTER':
             return {
-                ...state,
+                ...resetState(state),
                 letter: getLetter(state.letter),
-                isLocked: true
             }
         case 'WRITE':
             let newState = {...state};
