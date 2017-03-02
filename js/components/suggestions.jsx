@@ -3,12 +3,12 @@ import React from 'react';
 export default class Suggestions extends React.Component {
     render() {
         let className = 'suggestions';
-        let suggestDom = this.props.suggestions.map((suggestion) => {
-            return <li>{suggestion}</li>
+        let suggestDom = this.props.suggestions.map((suggestion, index) => {
+            return <li key={index}>{suggestion}</li>
         })
 
         if (!suggestDom.length) {
-            suggestDom.push(<li>žiadne príklady :(</li>)
+            suggestDom.push(<li>Žiadne príklady :(</li>)
         }
 
         if (!this.props.isOn) {

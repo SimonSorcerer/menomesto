@@ -8,6 +8,10 @@ const data = {
     zviera: zvierata
 }
 
+const capitalize = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 const filterSetOnStartingLetter = (set, startingLetter) => {
     return set.filter(x => x.startsWith(startingLetter.toLowerCase()));
 }
@@ -34,7 +38,7 @@ export const getSuggestions = (type, count = 5, letter = 'A') => {
     while (count--) {
         let suggestion = generator.next().value
         if (suggestion) {
-            result.push(suggestion);
+            result.push(capitalize(suggestion));
         }
     }
     return result;
