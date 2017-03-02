@@ -11,3 +11,10 @@ export const write = (text, type) => {
         text
     }
 }
+
+export const suggest = (type) => {
+    return {
+        type: 'SUGGEST',
+        set: type
+    }
+}

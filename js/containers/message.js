@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 import Component from '../components/message.jsx'
-import { types } from '../helpers/data'
 
 const hasWrongStartingLetter = (state, type) => {
     return state.fields[type].text.length && !state.fields[type].text.toLowerCase().startsWith(state.letter.toLowerCase());
@@ -37,8 +36,8 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-const Letter = connect(
+const Message = connect(
     mapStateToProps
 )(Component)
 
-export default Letter
+export default Message

@@ -37,11 +37,51 @@ body {
     display: flex;
 }
 
-.message {
+.hint {
+    position: absolute;
+    top: 24px;
+    right: 4px;
+    font-size: 0.8em;
+    color: #DDD;
+    cursor: pointer;
+}
+
+.hint:hover {
+    color: #595F6E;
+    font-size: 1em;
+}
+
+.message, .suggestions {
     text-align: center;
     font-size: .7em;
     opacity: 0.6;
     margin-top: 10px;
+}
+
+.suggestions {
+    text-align: left;
+    padding: .8em 1.4em;
+    margin-right: 1em;
+    margin-left: 2em;
+    border: 1px dashed #595F6E;
+    background-color: lightyellow;
+}
+
+.suggestions .head {
+    padding-bottom: 0.6em;
+    color: #333;
+}
+
+.suggestions ul {
+    padding: 0 1.4em;
+}
+
+.suggestions li {
+    list-style-type: square;
+}
+
+.off {
+    display: none;
 }
 
 .message.hidden {

@@ -1,8 +1,10 @@
-import { hasMatch } from '../helpers/data'
+import { hasMatch, getSuggestions } from '../helpers/data'
 
 const defaultField = {
     text: '',
-    isValid: false
+    isValid: false,
+    suggestions: [],
+    suggestionsActive: false
 }
 
 const defaultState = {
@@ -35,18 +37,27 @@ const resetState = (state) => {
 }
 
 const reducers = (state = defaultState, action) => {
+    let newState = {...state};
+
     switch (action.type) {
         case 'ROLL_LETTER':
             return {
                 ...resetState(state),
                 letter: getLetter(state.letter),
             }
+
         case 'WRITE':
-            let newState = {...state};
             newState.fields[action.set].text = action.text;
             newState.fields[action.set].isValid = hasMatch(action.text, action.set, state.letter)
-
             return newState;
+
+        case 'SUGGEST': {
+            newState.fields[action.set].suggestions = getSuggestions(action.set, 3, state.letter);
+            newState.fields[action.set].suggestionsActive = !newState.fields[action.set].suggestionsActive;
+            
+            return newState;
+        }
+        
         default:
             return state;
     }

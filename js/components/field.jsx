@@ -1,5 +1,6 @@
 import React from 'react'
 import Message from '../containers/message'
+import Suggestions from '../containers/suggestions'
 
 export default class Field extends React.Component {
     render() {
@@ -12,8 +13,10 @@ export default class Field extends React.Component {
                 <label className={ labelClassName } htmlFor={this.props.type}>
                     <span className='label-content'>{this.props.label}</span>
                 </label>
+                <span className='hint no-select' onClick={this.props.handleSuggestClick} title='Pomoc! Daj mi pár príkladov...'>?</span>
             </span>
-            <Message type={this.props.type} />
+            <Message type={this.props.type} />            
+            <Suggestions type={this.props.type} />
         </div>
     }
 }

@@ -1,12 +1,14 @@
 import { connect } from 'react-redux'
 import Component from '../components/field.jsx'
-import { write } from '../actions'
+import { write, suggest } from '../actions'
 
 const mapStateToProps = (state, ownProps) => {
+    const fieldState = state.fields[ownProps.type];
+
     return {
-        text: state.fields[ownProps.type].text,
-        isValid: state.fields[ownProps.type].isValid,
-        isFilled: state.fields[ownProps.type].text.length > 0
+        text: fieldState.text,
+        isValid: fieldState.isValid,
+        isFilled: fieldState.text.length > 0,
     }
 }
 
@@ -15,6 +17,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         handleChange: (e) => {
             const text = e.target.value;
             dispatch(write(text, ownProps.type));
+        },
+        handleSuggestClick: () => {
+            dispatch(suggest(ownProps.type));
         }
     }
 }

@@ -32,7 +32,10 @@ export const getSuggestions = (type, count = 5, letter = 'A') => {
     let result = [];
     
     while (count--) {
-        result.push(generator.next().value);
+        let suggestion = generator.next().value
+        if (suggestion) {
+            result.push(suggestion);
+        }
     }
     return result;
 }
