@@ -3,19 +3,11 @@ import Component from '../components/answers.jsx'
 import { rollLetter } from '../actions'
 
 const mapStateToProps = (state, ownProps) => {
-    return {
-        
-    }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-    }
+    return {}
 }
 
 const Answers = connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
 )(Component)
 
 export default Answers

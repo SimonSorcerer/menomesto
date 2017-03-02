@@ -3,11 +3,15 @@ import Component from '../components/message.jsx'
 import { types } from '../helpers/data'
 
 const hasWrongStartingLetter = (state, type) => {
-    return state[type].text.length && !state[type].text.toLowerCase().startsWith(state.letter.toLowerCase());
+    return state.fields[type].text.length && !state.fields[type].text.toLowerCase().startsWith(state.letter.toLowerCase());
+}
+
+const notFound = (state, type) => {
+    return state.fields[type].text.length && !hasWrongStartingLetter(state, type) && !state.fields[type].isValid;
 }
 
 const isValid = (state, type) => {
-    return state[type].isValid;
+    return state.fields[type].isValid;
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -16,6 +20,10 @@ const mapStateToProps = (state, ownProps) => {
 
     if (hasWrongStartingLetter(state, ownProps.type)) {
         message = 'Slovo musí začínať na písmeno "' + state.letter + '"!';
+    }
+
+    if (notFound(state, ownProps.type)) {
+        message = 'Hmm, nie úplne správne ...';
     }
 
     if (isValid(state, ownProps.type)) {

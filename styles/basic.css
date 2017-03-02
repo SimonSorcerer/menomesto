@@ -19,6 +19,8 @@ body {
     text-align: center;
     font-size: 4em;
     cursor: pointer;
+     -webkit-transition: color 2s, -webkit-transform 2s;
+    transition: color 2s, transform 2s;
 }
 
 .no-select {
@@ -46,12 +48,12 @@ body {
     display: none;
 }
 
-.message .sad {
-    color: indianred;
+.sad {
+    color: hsl(0, 80%, 60%);
 }
 
-.message .happy {
-    color: mediumseagreen;
+.happy {
+    color: hsl(120, 60%, 60%);
 }
 
 .message {

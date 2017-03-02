@@ -2,7 +2,12 @@ import React from 'react';
 
 export default class Letter extends React.Component {
     render() {
-        return <div className='letter no-select' onClick={this.props.handleClick}>
+        let className = 'letter no-select';
+
+        if (this.props.gameFinished) {
+            className += ' happy';
+        }
+        return <div className={className} onClick={this.props.handleClick}>
             {this.props.letter}
         </div>
     }

@@ -2,17 +2,20 @@ import { hasMatch } from '../helpers/data'
 
 const defaultState = {
     letter: 'A',
-    meno: {
-        text: '',
-        isValid: false
-    },
-    mesto: {
-        text: '',
-        isValid: false
-    },
-    zviera: {
-        text: '',
-        isValid: false
+    isLocked: false,
+    fields: {
+        meno: {
+            text: '',
+            isValid: false
+        },
+        mesto: {
+            text: '',
+            isValid: false
+        },
+        zviera: {
+            text: '',
+            isValid: false
+        }
     }
 }
 
@@ -30,12 +33,13 @@ const reducers = (state = defaultState, action) => {
         case 'ROLL_LETTER':
             return {
                 ...state,
-                letter: getLetter(state.letter)
+                letter: getLetter(state.letter),
+                isLocked: true
             }
         case 'WRITE':
             let newState = {...state};
-            newState[action.set].text = action.text;
-            newState[action.set].isValid = hasMatch(action.text, action.set, state.letter)
+            newState.fields[action.set].text = action.text;
+            newState.fields[action.set].isValid = hasMatch(action.text, action.set, state.letter)
 
             return newState;
         default:
