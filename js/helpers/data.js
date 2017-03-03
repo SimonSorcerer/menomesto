@@ -7,7 +7,7 @@ const data = {
     meno: mena,
     mesto: mesta,
     zviera: zvierata
-}
+};
 
 const capitalize = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -47,7 +47,26 @@ export const getSuggestions = (type, count = 5, letter = 'A') => {
             result.push(capitalize(suggestion));
         }
     }
+    getAvailableLetters();
     return result;
 }
 
 export const types = [...Object.keys(data)];
+
+const containsLetter = (set, letter) => {
+    return set.some((word) => {
+        return firstLettersMatch(word, letter);
+    });
+}
+
+const getAvailableLetters = () => {
+    let letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+    return letters.filter((letter) => {
+        return types.every((type) => {
+            return containsLetter(data[type], letter);
+        });
+    });
+}
+
+export const letters = getAvailableLetters();

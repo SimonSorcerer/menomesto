@@ -1,4 +1,4 @@
-import { hasMatch, getSuggestions } from '../helpers/data'
+import { hasMatch, getSuggestions, letters } from '../helpers/data'
 
 const defaultField = {
     text: '',
@@ -8,7 +8,7 @@ const defaultField = {
 }
 
 const defaultState = {
-    letter: 'A',
+    letter: letters[0],
     fields: {
         meno: {...defaultField},
         mesto: {...defaultField},
@@ -17,10 +17,7 @@ const defaultState = {
 }
 
 const getLetter = (exclude = '') => {
-    let letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-    
-    exclude = exclude.split('');
-    letters = letters.filter(x => exclude.indexOf(x) < 0);
+    let filteredLetters = letters.filter(x => exclude.split('').indexOf(x) < 0);
 
     return letters[Math.floor(Math.random() * letters.length)]
 }
@@ -52,8 +49,12 @@ const reducers = (state = defaultState, action) => {
             return newState;
 
         case 'SUGGEST': {
-            newState.fields[action.set].suggestions = getSuggestions(action.set, 3, state.letter);
-            newState.fields[action.set].suggestionsActive = !newState.fields[action.set].suggestionsActive;
+            let suggestionsActive = newState.fields[action.set].suggestionsActive;
+
+            newState.fields[action.set].suggestionsActive = !suggestionsActive;
+            if (!suggestionsActive) {
+                newState.fields[action.set].suggestions = getSuggestions(action.set, 3, state.letter);
+            }
             
             return newState;
         }

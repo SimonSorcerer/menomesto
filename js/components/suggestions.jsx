@@ -8,7 +8,7 @@ export default class Suggestions extends React.Component {
         })
 
         if (!suggestDom.length) {
-            suggestDom.push(<li>Žiadne príklady :(</li>)
+            suggestDom.push(<li key='0'>Žiadne príklady :(</li>)
         }
 
         if (!this.props.isOn) {
