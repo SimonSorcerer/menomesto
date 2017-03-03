@@ -1,6 +1,7 @@
 import mena from '../../data/meno.json'
 import mesta from '../../data/mesto.json'
 import zvierata from '../../data/zviera.json'
+import { diacriticsContains, diacriticsMatch } from './diacritics'
 
 const data = {
     meno: mena,
@@ -13,7 +14,7 @@ const capitalize = (string) => {
 }
 
 const filterSetOnStartingLetter = (set, startingLetter) => {
-    return set.filter(x => x.startsWith(startingLetter.toLowerCase()));
+    return set.filter(x => diacriticsMatch(x[0], startingLetter));
 }
 
 function* suggest(data, startingLetter) {
@@ -25,10 +26,15 @@ function* suggest(data, startingLetter) {
     }
 }
 
-export const hasMatch = (text, type, startingLetter) => {
-    let transformedText = text.toLowerCase();
+export const firstLettersMatch = (wordA, wordB) => {
+    return diacriticsMatch(wordA[0], wordB[0]);
+}
 
-    return text && data[type] && data[type].includes(transformedText) && transformedText.startsWith(startingLetter.toLowerCase());
+export const hasMatch = (text, type, startingLetter) => {
+    return text
+        && data[type]
+        && diacriticsContains(data[type], text)
+        && firstLettersMatch(text, startingLetter);
 }
 
 export const getSuggestions = (type, count = 5, letter = 'A') => {

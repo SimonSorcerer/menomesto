@@ -16,7 +16,7 @@ export default class Suggestions extends React.Component {
         }
 
         return <div className={className}>
-            <div class='head'>Príklady:</div>
+            <div className='head'>Príklady:</div>
             <ul>{suggestDom}</ul>
         </div>
     }

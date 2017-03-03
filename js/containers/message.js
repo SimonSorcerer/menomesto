@@ -1,8 +1,9 @@
 import { connect } from 'react-redux'
 import Component from '../components/message.jsx'
+import { firstLettersMatch } from '../helpers/data'
 
 const hasWrongStartingLetter = (state, type) => {
-    return state.fields[type].text.length && !state.fields[type].text.toLowerCase().startsWith(state.letter.toLowerCase());
+    return state.fields[type].text.length && !firstLettersMatch(state.fields[type].text, state.letter);
 }
 
 const notFound = (state, type) => {
